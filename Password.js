@@ -40,10 +40,15 @@ btnCreating.addEventListener("click", getPassword);
 copy.addEventListener("click", () => {
   if (inpCreating.value !== "") {
     copyPass();
+    massageCopy.innerText = "Copy";
     massageCopy.classList.add("show-massage-copy");
     setTimeout(() => {
       massageCopy.classList.add("hidden-massage-copy");
     }, 2000);
+    setTimeout(() => {
+      massageCopy.classList.remove("show-massage-copy");
+      massageCopy.classList.remove("hidden-massage-copy");
+    }, 2500);
   } else {
     massageCopy.innerText = "Empty";
     massageCopy.classList.add("show-massage-copy");
