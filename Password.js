@@ -1,5 +1,6 @@
 let inpCreating = document.getElementById("creating-pass");
 let copy = document.getElementById("copy");
+let massageCopy = document.querySelector(".massage-copy");
 let option = document.querySelectorAll(".boxs");
 let range = document.getElementById("range");
 let rangNum = document.getElementById("rang-num");
@@ -36,4 +37,26 @@ let copyPass = () => {
 };
 
 btnCreating.addEventListener("click", getPassword);
-copy.addEventListener("click", copyPass);
+copy.addEventListener("click", () => {
+  if (inpCreating.value !== "") {
+    copyPass();
+    massageCopy.classList.add("show-massage-copy");
+    setTimeout(() => {
+      massageCopy.classList.add("hidden-massage-copy");
+    }, 2000);
+  } else {
+    massageCopy.innerText = "Empty";
+    massageCopy.classList.add("show-massage-copy");
+    massageCopy.classList.remove("massage-copy");
+    massageCopy.classList.add("error-massage");
+    setTimeout(() => {
+      massageCopy.classList.add("hidden-massage-copy");
+    }, 2000);
+    setTimeout(() => {
+      massageCopy.classList.add("massage-copy");
+      massageCopy.classList.remove("error-massage");
+      massageCopy.classList.remove("show-massage-copy");
+      massageCopy.classList.remove("hidden-massage-copy");
+    }, 2500);
+  };
+});
